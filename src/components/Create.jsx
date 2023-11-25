@@ -51,11 +51,11 @@ export const Create = ()=>{
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Precio </label>
-                        <input placeholder="Ingrese el precio" onChange={(evento) => setPrice(evento.target.value)} className="form-control" type="number" />
+                        <input placeholder="Ingrese el precio" onChange={(evento) => setPrice(evento.target.value)} className="form-control" type="number" min="0"/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Existencia </label>
-                        <input placeholder="Ingrese la cantidad de producto" onChange={(evento) => setStock(evento.target.value)} className="form-control" type="number" />
+                        <input placeholder="Ingrese la cantidad de producto" onChange={(evento) => setStock(evento.target.value)} className="form-control" type="number" min="0"/>
                     </div>
                     <button type="submit" className="btn btn-secondary btn-2xl">Agregar</button>
                     <Link to="/" className="btn btn-danger btn-2xl">Cancelar</Link>

@@ -36,7 +36,7 @@ export const Show = () => {
     }
     useEffect(() => {
         getProductos()
-    }, [])
+    }, [productos])
     return (
         <div className="App">
             <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top" data-bs-theme="dark">

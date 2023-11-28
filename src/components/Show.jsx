@@ -43,7 +43,7 @@ export const Show = () => {
                 <div className="container">
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
                         <ul className="navbar-nav ml-auto">
-                            <a class="navbar-brand" href="/"><img src={logo} alt="Logo" width="50" height="50" class="d-inline-block"/> Ferretería</a>
+                            <a className="navbar-brand" href="/"><img src={logo} alt="Logo" width="50" height="50" className="d-inline-block"/> Ferretería</a>
                             <li className="nav-link disabled">
                                 <Link className="nav-link" to={'/sign-in'}>
                                     Ingreso

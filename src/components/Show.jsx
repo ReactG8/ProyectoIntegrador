@@ -90,8 +90,8 @@ export const Show = () => {
                                             <td>{ferreArt.price}</td>
                                             <td>{ferreArt.stock}</td>
                                             <td>
-                                                <Link to={`edit/${ferreArt.id}`} className="btn btn-light"> <i class="fa-solid fa-user-pen fa-2xl"></i></Link>
-                                                <button className="btn btn-danger" onClick={() => confirmDelete(ferreArt.id)}> <i class="fa-solid fa-trash-can fa-2xl"></i> </button>
+                                                <Link to={`edit/${ferreArt.id}`} className="btn btn-light"> <i className="fa-solid fa-user-pen fa-2xl"></i></Link>
+                                                <button className="btn btn-danger" onClick={() => confirmDelete(ferreArt.id)}> <i className="fa-solid fa-trash-can fa-2xl"></i> </button>
                                             </td>
                                         </tr>
                                     ))}

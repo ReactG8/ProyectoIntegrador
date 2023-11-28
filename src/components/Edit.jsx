@@ -53,7 +53,7 @@ export const Edit = () => {
 
     useEffect(() => {
         getFerreArtPorID(id)
-    }, [])
+    }, [id])
 
     return (
         <div className="container">

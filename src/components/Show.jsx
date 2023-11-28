@@ -1,11 +1,10 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
 import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebaseConfig";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 const mySwal = withReactContent(Swal);
-import logo from "../assets/Logo2.png";
+import { Link } from "react-router-dom";
 
 export const Show = () => {
   // Manejo de carga y errores con estados
@@ -48,8 +47,11 @@ export const Show = () => {
   useEffect(() => {
     getProductos();
   }, []);
+  console.log(productos);
   return (
     <div className="App">
+    
+      {/* El nav fue movido a un componente nuevo
       <nav
         className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top"
         data-bs-theme="dark"
@@ -85,7 +87,7 @@ export const Show = () => {
             </ul>
           </div>
         </div>
-      </nav>
+      </nav> */}
       <div className="container mt-5"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
@@ -100,7 +102,7 @@ export const Show = () => {
           <h1>Hubo un error en la base de datos: {error}</h1>
         </>
       )}
-      <div className="container ">
+      <div className="container">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
@@ -125,7 +127,11 @@ export const Show = () => {
                           <td>{ferreArt.name}</td>
                           <td>{ferreArt.description}</td>
                           <td>
-                            <img src={ferreArt.path} width="150" />
+                            <img
+                              src={ferreArt.path}
+                              width="150"
+                              alt={ferreArt.name}
+                            />
                           </td>
                           <td>{ferreArt.price}</td>
                           <td>{ferreArt.stock}</td>

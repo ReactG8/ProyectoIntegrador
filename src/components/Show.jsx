@@ -4,6 +4,8 @@ import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 const mySwal = withReactContent(Swal);
 
 export const Show = () => {
@@ -35,6 +37,7 @@ export const Show = () => {
       confirmButtonColor: "#3085d6",
       cancelButtonColor: "#d33",
       confirmButtonText: "Sí, ¡quiero eliminarlo!",
+      cancelButtonText: "Cancelar",
     }).then((result) => {
       if (result.isConfirmed) {
         deleteFerreArt(id);
@@ -98,59 +101,57 @@ export const Show = () => {
           <h1>Hubo un error en la base de datos: {error}</h1>
         </>
       )}
-      <div className="container">
+      <div className="container-fluid">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
               {productos && (
                 <>
-                  <table className="table table-dark table-hover">
-                    <thead>
-                      <tr>
-                        <th>Marca</th>
-                        <th>Producto</th>
-                        <th>Descripción</th>
-                        <th>Imagen</th>
-                        <th>Precio ($)</th>
-                        <th>Existencia</th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {productos.map((ferreArt) => (
-                        <tr key={ferreArt.id}>
-                          <td>{ferreArt.brand}</td>
-                          <td>{ferreArt.name}</td>
-                          <td>{ferreArt.description}</td>
-                          <td>
-                            <img
-                              src={ferreArt.path}
-                              width="150"
-                              alt={ferreArt.name}
-                            />
-                          </td>
-                          <td>{ferreArt.price}</td>
-                          <td>{ferreArt.stock}</td>
-                          <td>
-                            <Link
-                              to={`edit/${ferreArt.id}`}
-                              className="btn btn-light"
-                            >
-                              {" "}
-                              <i className="fa-solid fa-user-pen fa-2xl"></i>
-                            </Link>
-                            <button
-                              className="btn btn-danger"
-                              onClick={() => confirmDelete(ferreArt.id)}
-                            >
-                              {" "}
-                              <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                  <h1 className="mt-5 mx-4">Nuestros productos</h1>
+                  <div className="d-flex flex-wrap m-3 flex-row justify-content-start align-self-center">
+                    {productos.map((ferreArt) => (
+                      <Card
+                        style={{ width: "18rem", height: "35rem" }}
+                        className="m-3 justify-content-end border border-secondary"
+                      >
+                        <Card.Img
+                          variant="top"
+                          style={{ width: "17.9rem", height: "14rem" }}
+                          src={ferreArt.path}
+                        />
+                        <Card.Body>
+                          <Card.Title>{ferreArt.name}</Card.Title>
+                          <Card.Title className="text-danger">
+                            {ferreArt.brand}
+                          </Card.Title>
+                          <Card.Text>{ferreArt.description}</Card.Text>
+                          <Card.Text>
+                            <b>Stock:</b> {ferreArt.stock}
+                          </Card.Text>
+                          <Card.Text>
+                            <b>Precio:</b> $ {ferreArt.price}
+                          </Card.Text>
+                          <Button variant="primary" className="mx-1">
+                            Comprar
+                          </Button>
+                          <Link
+                            to={`edit/${ferreArt.id}`}
+                            className="btn btn-light mx-1 bg-info"
+                          >
+                            {" "}
+                            <i className="fa-solid fa-user-pen fa-2xl"></i>
+                          </Link>
+                          <Button
+                            className="btn btn-danger mx-1"
+                            onClick={() => confirmDelete(ferreArt.id)}
+                          >
+                            {" "}
+                            <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    ))}
+                  </div>
                 </>
               )}
             </div>

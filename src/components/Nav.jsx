@@ -6,7 +6,7 @@ import logo from "../assets/Logo2.png";
 export const Nav = () => {
   return (
     <nav
-className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top"
+className="navbar navbar-dark bg-dark navbar-expand-lg bg-dark border-bottom border-body fixed-top"
 data-bs-theme="dark"
 >
 <div className="container">

@@ -10,6 +10,11 @@ import logo from "../assets/Logo2.png"
 export const Show = () => {
     const [productos, setProductos] = useState([])
     const productosCollection = collection(db, "productos_prueba")
+
+    const getProductos = async () => {
+        const data = await getDocs(productosCollection)
+        setProductos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+    };
     
     const deleteFerreArt = async (id) => {
         const productosDoc = doc(db, "productos_prueba", id)
@@ -27,18 +32,14 @@ export const Show = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 deleteFerreArt(id);
+                getProductos();
                 Swal.fire("¡Borrado!", "El documento ha sido eliminado.", "success");
             }
         });
     }
     useEffect(() => {
-        const getProductos = async () => {
-            const data = await getDocs(productosCollection)
-            setProductos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-        };
-
         getProductos();
-    }, [productos]);
+    }, []);
     
     return (
         <div className="App">

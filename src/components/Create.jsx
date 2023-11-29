@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
-import { db } from "../firebaseConfig/firebase"
+import { db } from "../firebaseConfig/firebase.js"
 
 export const Create = ()=>{
     const [brand, setBrand] = useState("")

@@ -8,7 +8,7 @@ const mySwal = withReactContent(Swal);
 
 export const Show = () => {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState(null);
   const productosCollection = collection(db, "productos");
   const getProductos = async () => {
@@ -45,7 +45,6 @@ export const Show = () => {
   useEffect(() => {
     getProductos();
   }, []);
-  console.log(productos);
   return (
     <div className="App">
       {/* El nav fue movido a un componente nuevo
@@ -88,7 +87,7 @@ export const Show = () => {
       <div className="container mt-5"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
-        <div className="d-flex justify-content-center">
+        <div className="d-flex   border container">
           <div className="spinner-border" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>

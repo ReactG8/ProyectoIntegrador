@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react"
 import { Link, useParams, useNavigate } from "react-router-dom"
 import { getDoc, updateDoc, doc } from "firebase/firestore"
-import { db } from "../../firebaseConfig/firebase"
+import { db } from "../firebaseConfig/firebase"
 import Swal from "sweetalert2"
 import withReactContent from "sweetalert2-react-content"
-const mySwal = withReactContent(Swal)
+const mySwal2 = withReactContent(Swal)
 
 export const Edit = () => {
     const [brand, setBrand] = useState("")
@@ -20,7 +20,7 @@ export const Edit = () => {
 
     const update = async (evento) => {
         evento.preventDefault()
-        const ferreArtDoc = doc(db, "productos_prueba", id)
+        const ferreArtDoc = doc(db, "productos", id)
         const data = {
             brand: brand,
             name: name,
@@ -33,7 +33,7 @@ export const Edit = () => {
         navigate("/")
     }
     const getFerreArtPorID = async (id) => {
-        const ferreArtDoc = await getDoc(doc(db, "productos_prueba", id))
+        const ferreArtDoc = await getDoc(doc(db, "productos", id))
         if (ferreArtDoc.exists()) {
             setBrand(ferreArtDoc.data().brand)
             setName(ferreArtDoc.data().name)
@@ -50,6 +50,7 @@ export const Edit = () => {
             
         }
     }
+
     useEffect(() => {
         getFerreArtPorID(id)
     }, [id])
@@ -78,11 +79,11 @@ export const Edit = () => {
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Precio </label>
-                            <input value={price} onChange={(evento) => setPrice(evento.target.value)} className="form-control" type="number" />
+                            <input value={price} onChange={(evento) => setPrice(evento.target.value)} className="form-control" type="number" min="0"/>
                         </div>
                         <div className="mb-3">
                             <label className="form-label">Existencia </label>
-                            <input value={stock} onChange={(evento) => setStock(evento.target.value)} className="form-control" type="number" />
+                            <input value={stock} onChange={(evento) => setStock(evento.target.value)} className="form-control" type="number" min="0"/>
                         </div>
                         <button type="submit" className="btn btn-secondary btn-2xl">Editar</button>
                         <Link to="/" className="btn btn-danger btn-2xl">Cancelar</Link>

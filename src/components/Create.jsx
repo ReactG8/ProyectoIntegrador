@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { collection, addDoc } from "firebase/firestore"
-import { db } from "../../firebaseConfig/firebase"
+import { db } from "../firebaseConfig/firebase"
 
 export const Create = ()=>{
     const [brand, setBrand] = useState("")
@@ -13,7 +13,7 @@ export const Create = ()=>{
 
     const navigate = useNavigate()
 
-    const productosCollection = collection(db, "productos_prueba")
+    const productosCollection = collection(db, "productos")
 
     const createProducto = async (evento)=>{
         evento.preventDefault()
@@ -51,11 +51,11 @@ export const Create = ()=>{
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Precio </label>
-                        <input placeholder="Ingrese el precio" onChange={(evento) => setPrice(evento.target.value)} className="form-control" type="number" />
+                        <input placeholder="Ingrese el precio" onChange={(evento) => setPrice(evento.target.value)} className="form-control" type="number" min="0"/>
                     </div>
                     <div className="mb-3">
                         <label className="form-label">Existencia </label>
-                        <input placeholder="Ingrese la cantidad de producto" onChange={(evento) => setStock(evento.target.value)} className="form-control" type="number" />
+                        <input placeholder="Ingrese la cantidad de producto" onChange={(evento) => setStock(evento.target.value)} className="form-control" type="number" min="0"/>
                     </div>
                     <button type="submit" className="btn btn-secondary btn-2xl">Agregar</button>
                     <Link to="/" className="btn btn-danger btn-2xl">Cancelar</Link>

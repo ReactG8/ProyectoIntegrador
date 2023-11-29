@@ -44,7 +44,7 @@ export const Show = () => {
   };
   useEffect(() => {
     getProductos();
-  }, []);
+  }, [productos]);
   return (
     <div className="App">
       {/* El nav fue movido a un componente nuevo

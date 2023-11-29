@@ -20,7 +20,7 @@ export const Edit = () => {
 
     const update = async (evento) => {
         evento.preventDefault()
-        const ferreArtDoc = doc(db, "productos", id)
+        const ferreArtDoc = doc(db, "productos_prueba", id)
         const data = {
             brand: brand,
             name: name,
@@ -33,7 +33,7 @@ export const Edit = () => {
         navigate("/")
     }
     const getFerreArtPorID = async (id) => {
-        const ferreArtDoc = await getDoc(doc(db, "productos", id))
+        const ferreArtDoc = await getDoc(doc(db, "productos_prueba", id))
         if (ferreArtDoc.exists()) {
             setBrand(ferreArtDoc.data().brand)
             setName(ferreArtDoc.data().name)

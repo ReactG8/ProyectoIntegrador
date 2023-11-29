@@ -13,7 +13,7 @@ export const Create = ()=>{
 
     const navigate = useNavigate()
 
-    const productosCollection = collection(db, "productos")
+    const productosCollection = collection(db, "productos_prueba")
 
     const createProducto = async (evento)=>{
         evento.preventDefault()

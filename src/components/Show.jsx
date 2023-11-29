@@ -9,13 +9,10 @@ import logo from "../assets/Logo2.png"
 
 export const Show = () => {
     const [productos, setProductos] = useState([])
-    const productosCollection = collection(db, "productos")
-    const getProductos = async () => {
-        const data = await getDocs(productosCollection)
-        setProductos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
-    }
-    const deleteFerreArt = async () => {
-        const productosDoc = doc(db, "productos", id)
+    const productosCollection = collection(db, "productos_prueba")
+    
+    const deleteFerreArt = async (id) => {
+        const productosDoc = doc(db, "productos_prueba", id)
         await deleteDoc(productosDoc)
     }
     const confirmDelete = (id) => {
@@ -35,8 +32,14 @@ export const Show = () => {
         });
     }
     useEffect(() => {
-        getProductos()
-    }, [])
+        const getProductos = async () => {
+            const data = await getDocs(productosCollection)
+            setProductos(data.docs.map((doc) => ({ ...doc.data(), id: doc.id })))
+        };
+
+        getProductos();
+    }, [productos]);
+    
     return (
         <div className="App">
             <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top" data-bs-theme="dark">
@@ -82,7 +85,7 @@ export const Show = () => {
                                 </thead>
                                 <tbody>
                                     {productos.map((ferreArt) => (
-                                        <tr>
+                                        <tr key={ferreArt.id}>
                                             <td>{ferreArt.brand}</td>
                                             <td>{ferreArt.name}</td>
                                             <td>{ferreArt.description}</td>

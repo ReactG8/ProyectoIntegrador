@@ -33,6 +33,11 @@ data-bs-theme="dark"
         </Link>
       </li>
       <li className="nav-link">
+        <Link className="nav-link text-warning" to={"/contact"}>
+        <i class="fa fa-comments"></i> Contacto
+        </Link>
+      </li>
+      <li className="nav-link">
         <Link className="nav-link text-warning fa-beat-fade" to={"/create"}>
         <i class="fa-solid fa-plus"></i> Crear Producto
         </Link>

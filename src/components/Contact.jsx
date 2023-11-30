@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import logo from "../assets/Logo2.png"
 import { collection, addDoc } from "firebase/firestore"
-import { db } from "../../firebaseConfig/firebase.js"
+import { db } from "../firebaseConfig/firebase.js";
 import './Contact.css'
 
 export const Contact = () => {
@@ -60,38 +60,7 @@ export const Contact = () => {
 
 
     return (
-        //Desde aqui el Header
-        <div className="App">
-            <nav className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top" data-bs-theme="dark">
-                <div className="container">
-                    <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
-                        <ul className="navbar-nav ml-auto">
-                            <a className="navbar-brand" href="/"><img src={logo} alt="Logo" width="50" height="50" className="d-inline-block" /> Ferretería</a>
-                            <li className="nav-link disabled">
-                                <Link className="nav-link" to={'/sign-in'}>
-                                    Ingreso
-                                </Link>
-                            </li>
-                            <li className="nav-link disabled">
-                                <Link className="nav-link" to={'/sign-up'}>
-                                    Registro
-                                </Link>
-                            </li>
-                            <li className="nav-link">
-                                <Link className="nav-link" to={'/contact'}>
-                                    Contacto
-                                </Link>
-                            </li>
-                            <li className="nav-link">
-                                <Link className="nav-link" to={'/create'}>
-                                    Crear Producto
-                                </Link>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-
+    <div className="App">
             {/* //Desde aqui el formulario */}
             <div className="row align-items-center">
                 <div className="row align-items-center">

@@ -24,17 +24,17 @@ data-bs-theme="dark"
       </a>
       <li className="nav-link disabled">
         <Link className="nav-link text-warning" to={"/sign-in"}>
-        <i class="fa-solid fa-up-long"></i> Ingreso
+        <i className="fa-solid fa-up-long"></i> Ingreso
         </Link>
       </li>
       <li className="nav-link disabled">
         <Link className="nav-link text-warning" to={"/sign-up"}>
-        <i class="fa-solid fa-user"></i> Registro
+        <i className="fa-solid fa-user"></i> Registro
         </Link>
       </li>
       <li className="nav-link">
         <Link className="nav-link text-warning fa-beat-fade" to={"/create"}>
-        <i class="fa-solid fa-plus"></i> Crear Producto
+        <i className="fa-solid fa-plus"></i> Crear Producto
         </Link>
       </li>
     </ul>

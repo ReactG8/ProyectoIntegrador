@@ -101,18 +101,18 @@ export const Show = () => {
           <h1>Hubo un error en la base de datos: {error}</h1>
         </>
       )}
-      <div className="container-fluid">
+      <div className="container-fluid bg-success p-2 text-dark bg-opacity-10">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
               {productos && (
                 <>
                   <h1 className="mt-5 mx-4">Nuestros productos</h1>
-                  <div className="d-flex flex-wrap m-3 flex-row justify-content-start align-self-center">
+                  <div className="d-flex flex-wrap m-3 flex-row">
                     {productos.map((ferreArt) => (
                       <Card
                         style={{ width: "18rem", height: "35rem" }}
-                        className="m-3 justify-content-end border border-secondary"
+                        className="m-3 justify-content-end border border-secondary shadow"
                       >
                         <Card.Img
                           variant="top"
@@ -131,7 +131,8 @@ export const Show = () => {
                           <Card.Text>
                             <b>Precio:</b> $ {ferreArt.price}
                           </Card.Text>
-                          <Button variant="primary" className="mx-1">
+                          <Button variant="success" className="mx-1">
+                            <i class="fa-solid fa-cart-shopping fa-sm"></i>{" "}
                             Comprar
                           </Button>
                           <Link

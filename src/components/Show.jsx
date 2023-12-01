@@ -73,7 +73,7 @@ export const Show = () => {
           <h1>Hubo un error en la base de datos: {error}</h1>
         </>
       )}
-      <div className="container-fluid">
+      <div className="container-fluid bg-success p-2 text-dark bg-opacity-10">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
@@ -85,49 +85,52 @@ export const Show = () => {
                     onChange={(e) => setQuerySearch(e.target.value)}
                   /> */}
                   <div className="d-flex flex-wrap m-3 flex-row justify-content-start align-self-center">
-                    {productos.map((ferreArt) => (
-                      <Card
-                        key={ferreArt.id}
-                        style={{ width: "18rem", height: "35rem" }}
-                        className="m-3 justify-content-end border border-secondary"
-                      >
-                        <Card.Img
-                          variant="top"
-                          style={{ width: "17.9rem", height: "14rem" }}
-                          src={ferreArt.path}
-                        />
-                        <Card.Body>
-                          <Card.Title>{ferreArt.name}</Card.Title>
-                          <Card.Title className="text-danger">
-                            {ferreArt.brand}
-                          </Card.Title>
-                          <Card.Text>{ferreArt.description}</Card.Text>
-                          <Card.Text>
-                            <b>Stock:</b> {ferreArt.stock}
-                          </Card.Text>
-                          <Card.Text>
-                            <b>Precio:</b> $ {ferreArt.price}
-                          </Card.Text>
-                          <Button variant="primary" className="mx-1">
-                            Comprar
-                          </Button>
-                          <Link
-                            to={`edit/${ferreArt.id}`}
-                            className="btn btn-light mx-1 bg-info"
-                          >
-                            {" "}
-                            <i className="fa-solid fa-user-pen fa-2xl"></i>
-                          </Link>
-                          <Button
-                            className="btn btn-danger mx-1"
-                            onClick={() => confirmDelete(ferreArt.id)}
-                          >
-                            {" "}
-                            <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
-                          </Button>
-                        </Card.Body>
-                      </Card>
-                    ))}
+                    <div className="d-flex flex-wrap m-3 flex-row">
+                      {productos.map((ferreArt) => (
+                        <Card
+                          key={ferreArt.id}
+                          style={{ width: "18rem", height: "35rem" }}
+                          className="m-3 justify-content-end border border-secondary shadow"
+                        >
+                          <Card.Img
+                            variant="top"
+                            style={{ width: "17.9rem", height: "14rem" }}
+                            src={ferreArt.path}
+                          />
+                          <Card.Body>
+                            <Card.Title>{ferreArt.name}</Card.Title>
+                            <Card.Title className="text-danger">
+                              {ferreArt.brand}
+                            </Card.Title>
+                            <Card.Text>{ferreArt.description}</Card.Text>
+                            <Card.Text>
+                              <b>Stock:</b> {ferreArt.stock}
+                            </Card.Text>
+                            <Card.Text>
+                              <b>Precio:</b> $ {ferreArt.price}
+                            </Card.Text>
+                            <Button variant="success" className="mx-1">
+                              <i className="fa-solid fa-cart-shopping fa-sm"></i>{" "}
+                              Comprar
+                            </Button>
+                            <Link
+                              to={`edit/${ferreArt.id}`}
+                              className="btn btn-light mx-1 bg-info"
+                            >
+                              {" "}
+                              <i className="fa-solid fa-user-pen fa-2xl"></i>
+                            </Link>
+                            <Button
+                              className="btn btn-danger mx-1"
+                              onClick={() => confirmDelete(ferreArt.id)}
+                            >
+                              {" "}
+                              <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
+                            </Button>
+                          </Card.Body>
+                        </Card>
+                      ))}
+                    </div>
                   </div>
                 </>
               )}

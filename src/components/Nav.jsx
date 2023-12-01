@@ -16,25 +16,30 @@ data-bs-theme="dark"
         <img
           src={logo}
           alt="Logo"
-          width="50"
-          height="50"
+          width="60"
+          height="60"
           className="d-inline-block"
         />{" "}
-        Ferretería
+        Ferretería MiBarrio
       </a>
       <li className="nav-link disabled">
-        <Link className="nav-link" to={"/sign-in"}>
-          Ingreso
+        <Link className="nav-link text-warning" to={"/sign-in"}>
+        <i className="fa-solid fa-up-long"></i> Ingreso
         </Link>
       </li>
       <li className="nav-link disabled">
-        <Link className="nav-link" to={"/sign-up"}>
-          Registro
+        <Link className="nav-link text-warning" to={"/sign-up"}>
+        <i className="fa-solid fa-user"></i> Registro
         </Link>
       </li>
       <li className="nav-link">
-        <Link className="nav-link" to={"/create"}>
-          Crear Producto
+        <Link className="nav-link text-warning" to={"/contact"}>
+        <i class="fa fa-comments"></i> Contacto
+        </Link>
+      </li>
+      <li className="nav-link">
+        <Link className="nav-link text-warning fa-beat-fade" to={"/create"}>
+        <i className="fa-solid fa-plus"></i> Crear Producto
         </Link>
       </li>
     </ul>

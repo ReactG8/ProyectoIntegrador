@@ -4,6 +4,8 @@ import { Create } from "./components/Create";
 import { Edit } from "./components/Edit";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
+import { Contact } from "./components/Contact"
+import  Login from "./components/Login"; 
 
 
 
@@ -16,6 +18,7 @@ export const App = () => {
           <Route path="/" element={<Show />} />
           <Route path="/create" element={<Create />} />
           <Route path="/edit/:id" element={<Edit />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/login" element={<Login />} />
         </Routes>

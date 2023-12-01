@@ -74,9 +74,9 @@ export const Show = () => {
         </>
       )}
       <div className="container-fluid bg-success p-2 text-dark bg-opacity-10">
-        <div className="row">
-          <div className="col">
-            <div className="d-grid gap-2">
+        <div className="row mt-5">
+          <div className="col mt-5">
+            <div className="d-grid gap-2 mt-5">
               {productos && (
                 <>
                   <h1 className="mt-5 mx-4">Nuestros productos</h1>
@@ -85,12 +85,12 @@ export const Show = () => {
                     onChange={(e) => setQuerySearch(e.target.value)}
                   /> */}
                   <div className="d-flex flex-wrap m-3 flex-row justify-content-start align-self-center">
-                    <div className="d-flex flex-wrap m-3 flex-row">
+                    <div className="d-flex flex-wrap m-3 flex-row mt-5 justify-content-center">
                       {productos.map((ferreArt) => (
                         <Card
                           key={ferreArt.id}
                           style={{ width: "18rem", height: "35rem" }}
-                          className="m-3 justify-content-end border border-secondary shadow"
+                          className="m-3 justify-content-end shadow"
                         >
                           <Card.Img
                             variant="top"

@@ -6,7 +6,7 @@ import logo from "../assets/Logo2.png";
 export const Nav = () => {
   return (
     <nav
-className="navbar navbar-dark bg-dark navbar-expand-lg bg-dark border-bottom border-body fixed-top"
+className="navbar navbar-dark bg-dark navbar-expand-lg bg-dark border-body fixed-top shadow"
 data-bs-theme="dark"
 >
 <div className="container">
@@ -34,7 +34,7 @@ data-bs-theme="dark"
       </li>
       <li className="nav-link">
         <Link className="nav-link text-warning" to={"/contact"}>
-        <i class="fa fa-comments"></i> Contacto
+        <i className="fa fa-comments"></i> Contacto
         </Link>
       </li>
       <li className="nav-link">

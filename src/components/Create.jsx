@@ -29,7 +29,7 @@ export const Create = () => {
   };
   return (
     <div className="container-fluid mt-5">
-      <div className="row mt-5">
+      <div className="row justify-content-center align-items-center mt-5">
         <div className="col mt-5">
           <h1 className="text-center">Crear Producto</h1>
           <form onSubmit={createProducto}>
@@ -37,44 +37,52 @@ export const Create = () => {
               <label className="form-label">
                 <b>Marca</b>
               </label>
-              <input
+              <textarea
                 placeholder="Ingrese la marca"
+                rows={1}
                 onChange={(evento) => setBrand(evento.target.value)}
                 className="form-control"
                 type="text"
+                required
               />
             </div>
             <div className="mb-3">
               <label className="form-label">
                 <b>Modelo</b>
               </label>
-              <input
+              <textarea
                 placeholder="Ingrese el producto"
+                rows={1}
                 onChange={(evento) => setName(evento.target.value)}
                 className="form-control"
                 type="text"
+                required
               />
             </div>
             <div className="mb-3">
               <label className="form-label">
                 <b>Descripción</b>
               </label>
-              <input
+              <textarea
                 placeholder="Ingrese la descripción"
+                rows={3}
                 onChange={(evento) => setDescription(evento.target.value)}
                 className="form-control"
                 type="text"
+                required
               />
             </div>
             <div className="mb-3">
               <label className="form-label">
                 <b>Imagen (URL)</b>
               </label>
-              <input
+              <textarea
                 placeholder="Ingrese la URL de la imagen"
+                rows={3}
                 onChange={(evento) => setPath(evento.target.value)}
                 className="form-control"
                 type="text"
+                required
               />
             </div>
             <div className="mb-3">
@@ -87,6 +95,7 @@ export const Create = () => {
                 className="form-control"
                 type="number"
                 min="0"
+                required
               />
             </div>
             <div className="mb-3">
@@ -99,6 +108,7 @@ export const Create = () => {
                 className="form-control"
                 type="number"
                 min="0"
+                required
               />
             </div>
             <button
@@ -112,6 +122,7 @@ export const Create = () => {
             </Link>
           </form>
         </div>
+        <div className="col auto text-center"><div class="center-block"><img src={path} onChange={(evento) => setPrice(evento.target.src)} alt="Previsualización de Imagen del producto" width="300" class="d-inline-block"></img></div></div>
       </div>
     </div>
   );

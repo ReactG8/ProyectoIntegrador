@@ -5,7 +5,7 @@ import { Edit } from "./components/Edit";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import { Contact } from "./components/Contact"
-import  Login from "./components/Login"; 
+import  { Login } from "./components/Login"; 
 
 
 

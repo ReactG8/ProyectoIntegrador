@@ -6,7 +6,8 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import "./Show.css"
+import { Pagination } from "./Pagination.jsx";
+
 const mySwal = withReactContent(Swal);
 
 export const Show = () => {
@@ -184,21 +185,14 @@ export const Show = () => {
                       </Card>
                     ))}
                   </div>
-                  {/* Controles de paginación */}
-                  <div className="pagination align-items-center justify-content-center">
-                    <button className="btn btn-primary m-2" onClick={prevPage} disabled={currentPage === 1}>Anterior</button>
-                    {[...Array(Math.ceil(productos.length / productosPerPage)).keys()].map((number) => (
-                      <button
-                      key={number + 1}
-                      onClick={() => paginate(number + 1)}
-                      className={currentPage === number + 1 ? "current-page" : "other-page"}
-                    >
-                      {number + 1}
-                    </button>
-    
-                    ))}
-                    <button className="btn btn-primary m-2" onClick={nextPage} disabled={currentPage === Math.ceil(productos.length / productosPerPage)}>Siguiente</button>
-                  </div>
+                  {/* Componente de paginación */}
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={Math.ceil(productos.length / productosPerPage)}
+                    onPageChange={paginate}
+                    onPrevPage={prevPage}
+                    onNextPage={nextPage}
+                  />
                 </>
               )}
             </div>

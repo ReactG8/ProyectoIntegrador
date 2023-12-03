@@ -4,6 +4,7 @@ import { collection, getDocs, deleteDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+import { Pagination } from "./Pagination.jsx";
 
 const mySwal = withReactContent(Swal);
 
@@ -12,6 +13,10 @@ export const Admin = () => {
   const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState(null);
   const productosCollection = collection(db, "productos");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productosPerPage] = useState(5); // Número de productos por página
+
   const getProductos = async () => {
     try {
       const data = await getDocs(productosCollection);
@@ -47,6 +52,29 @@ export const Admin = () => {
   useEffect(() => {
     getProductos();
   }, []);
+
+  // Calcular índices de productos para la página actual
+  const indexOfLastProducto = currentPage * productosPerPage;
+  const indexOfFirstProducto = indexOfLastProducto - productosPerPage;
+  const currentProductos = productos && productos.slice(indexOfFirstProducto, indexOfLastProducto);
+
+  // Cambiar de página
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Página siguiente
+  const nextPage = () => {
+    if (currentPage < Math.ceil(productos.length / productosPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Página anterior
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
   return (
     <div className="App">
       <div className="container mt-5"></div>
@@ -68,7 +96,7 @@ export const Admin = () => {
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
-              {productos && (
+              {currentProductos && (
                 <>
                   <table className="table table-dark table-hover">
                     <thead>
@@ -83,7 +111,7 @@ export const Admin = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {productos.map((ferreArt) => (
+                      {currentProductos.map((ferreArt) => (
                         <tr key={ferreArt.id}>
                           <td>{ferreArt.brand}</td>
                           <td>{ferreArt.name}</td>
@@ -117,6 +145,14 @@ export const Admin = () => {
                       ))}
                     </tbody>
                   </table>
+                  {/* Componente de paginación */}
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={Math.ceil(productos.length / productosPerPage)}
+                    onPageChange={paginate}
+                    onPrevPage={prevPage}
+                    onNextPage={nextPage}
+                  />
                 </>
               )}
             </div>

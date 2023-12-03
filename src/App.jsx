@@ -5,6 +5,7 @@ import { Edit } from "./components/Edit";
 import { Nav } from "./components/Nav";
 import { Footer } from "./components/Footer";
 import { Contact } from "./components/Contact"
+import { Admin } from "./components/Admin"
 
 export const App = () => {
   return (
@@ -16,8 +17,7 @@ export const App = () => {
           <Route path="/create" element={<Create />} />
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/contact" element={<Contact />} />
-          
+          <Route path="/admin" element={<Admin />} />  
         </Routes>
         <Footer />
       </BrowserRouter>

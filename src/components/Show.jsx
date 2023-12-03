@@ -118,10 +118,10 @@ export const Show = () => {
           </div>
         </div>
       </nav> */}
-      <div className="container mt-5"></div>
+      <div className="container"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
-        <div className="d-flex   border container">
+        <div className="d-flex border container">
           <div className="spinner-border" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
@@ -163,7 +163,7 @@ export const Show = () => {
                             <b>Precio:</b> $ {ferreArt.price}
                           </Card.Text>
                           <Button variant="success" className="mx-1">
-                            <i class="fa-solid fa-cart-shopping fa-sm"></i>{" "}
+                            <i className="fa-solid fa-cart-shopping fa-sm"></i>{" "}
                             Comprar
                           </Button>
                           <Link

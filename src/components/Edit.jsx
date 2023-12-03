@@ -142,10 +142,10 @@ export const Edit = () => {
               type="submit"
               className="btn btn-secondary btn-2xl m-3 btn-success"
             >
-              <i class="fa-solid fa-floppy-disk"></i> Guardar cambios
+              <i className="fa-solid fa-floppy-disk"></i> Guardar cambios
             </button>
             <Link to="/" className="btn btn-danger btn-2xl">
-              <i class="fa-solid fa-xmark"></i> Cancelar
+              <i className="fa-solid fa-xmark"></i> Cancelar
             </Link>
           </form>
         </div>

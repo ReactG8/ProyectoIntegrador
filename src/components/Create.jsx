@@ -115,14 +115,14 @@ export const Create = () => {
               type="submit"
               className="btn btn-secondary btn-2xl m-3 btn-success"
             >
-              <i class="fa-solid fa-plus"></i> Agregar
+              <i className="fa-solid fa-plus"></i> Agregar
             </button>
             <Link to="/" className="btn btn-danger btn-2xl">
-              <i class="fa-solid fa-xmark"></i> Cancelar
+              <i className="fa-solid fa-xmark"></i> Cancelar
             </Link>
           </form>
         </div>
-        <div className="col auto text-center"><div class="center-block"><img src={path} onChange={(evento) => setPrice(evento.target.src)} alt="Previsualización de Imagen del producto" width="300" class="d-inline-block"></img></div></div>
+        <div className="col auto text-center"><div className="center-block"><img src={path} onChange={(evento) => setPrice(evento.target.src)} alt="Previsualización de Imagen del producto" width="300" className="d-inline-block"></img></div></div>
       </div>
     </div>
   );

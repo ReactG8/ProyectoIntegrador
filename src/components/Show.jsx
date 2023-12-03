@@ -186,7 +186,7 @@ export const Show = () => {
                   </div>
                   {/* Controles de paginación */}
                   <div className="pagination align-items-center justify-content-center">
-                    <button className="btn btn-primary m-2" onClick={prevPage}>Anterior</button>
+                    <button className="btn btn-primary m-2" onClick={prevPage} disabled={currentPage === 1}>Anterior</button>
                     {[...Array(Math.ceil(productos.length / productosPerPage)).keys()].map((number) => (
                       <button
                       key={number + 1}
@@ -197,7 +197,7 @@ export const Show = () => {
                     </button>
     
                     ))}
-                    <button className="btn btn-primary m-2" onClick={nextPage}>Siguiente</button>
+                    <button className="btn btn-primary m-2" onClick={nextPage} disabled={currentPage === Math.ceil(productos.length / productosPerPage)}>Siguiente</button>
                   </div>
                 </>
               )}

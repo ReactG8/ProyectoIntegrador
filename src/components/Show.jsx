@@ -6,13 +6,17 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import "./Show.css"
 const mySwal = withReactContent(Swal);
 
 export const Show = () => {
-  // const [querySearch, setQuerySearch] = useState("");
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productosPerPage] = useState(4); // Número de productos por página
+
   const productosCollection = collection(db, "productos");
   const getProductos = async () => {
     try {
@@ -24,11 +28,13 @@ export const Show = () => {
       setLoading(false);
     }
   };
+
   const deleteFerreArt = async (id) => {
     const productosDoc = doc(db, "productos", id);
     await deleteDoc(productosDoc);
     await getProductos();
   };
+  
   const confirmDelete = (id) => {
     Swal.fire({
       title: "¿Está seguro?",
@@ -46,19 +52,72 @@ export const Show = () => {
       }
     });
   };
-
+  
   useEffect(() => {
     getProductos();
   }, []);
-  // funcion de searching, a probar!
-  // const filteredItems =
-  //   querySearch === ""
-  //     ? productos
-  //     : productos?.filter((e) =>
-  //         e.name.toLowerCase().includes(querySearch.toLowerCase())
-  //       );
+  
+  // Calcular índices de productos para la página actual
+  const indexOfLastProducto = currentPage * productosPerPage;
+  const indexOfFirstProducto = indexOfLastProducto - productosPerPage;
+  const currentProductos = productos && productos.slice(indexOfFirstProducto, indexOfLastProducto);
+
+  // Cambiar de página
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Página siguiente
+  const nextPage = () => {
+    if (currentPage < Math.ceil(productos.length / productosPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Página anterior
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  
   return (
     <div className="App">
+      {/* El nav fue movido a un componente nuevo
+      <nav
+        className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top"
+        data-bs-theme="dark"
+      >
+        <div className="container">
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav ml-auto">
+              <a className="navbar-brand" href="/">
+                <img
+                  src={logo}
+                  alt="Logo"
+                  width="50"
+                  height="50"
+                  className="d-inline-block"
+                />{" "}
+                Ferretería
+              </a>
+              <li className="nav-link disabled">
+                <Link className="nav-link" to={"/sign-in"}>
+                  Ingreso
+                </Link>
+              </li>
+              <li className="nav-link disabled">
+                <Link className="nav-link" to={"/sign-up"}>
+                  Registro
+                </Link>
+              </li>
+              <li className="nav-link">
+                <Link className="nav-link" to={"/create"}>
+                  Crear Producto
+                </Link>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav> */}
       <div className="container mt-5"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
@@ -74,63 +133,71 @@ export const Show = () => {
         </>
       )}
       <div className="container-fluid bg-success p-2 text-dark bg-opacity-10">
-        <div className="row mt-5">
-          <div className="col mt-5">
-            <div className="d-grid gap-2 mt-5">
-              {productos && (
+        <div className="row">
+          <div className="col">
+            <div className="d-grid gap-2">
+              {currentProductos && (
                 <>
                   <h1 className="mt-5 mx-4">Nuestros productos</h1>
-                  {/* <input
-                    placeholder="Search..."
-                    onChange={(e) => setQuerySearch(e.target.value)}
-                  /> */}
-                  <div className="d-flex flex-wrap m-3 flex-row justify-content-start align-self-center">
-                    <div className="d-flex flex-wrap m-3 flex-row mt-5 justify-content-center">
-                      {productos.map((ferreArt) => (
-                        <Card
-                          key={ferreArt.id}
-                          style={{ width: "18rem", height: "35rem" }}
-                          className="m-3 justify-content-end shadow"
-                        >
-                          <Card.Img
-                            variant="top"
-                            style={{ width: "17.9rem", height: "14rem" }}
-                            src={ferreArt.path}
-                          />
-                          <Card.Body>
-                            <Card.Title>{ferreArt.name}</Card.Title>
-                            <Card.Title className="text-danger">
-                              {ferreArt.brand}
-                            </Card.Title>
-                            <Card.Text>{ferreArt.description}</Card.Text>
-                            <Card.Text>
-                              <b>Stock:</b> {ferreArt.stock}
-                            </Card.Text>
-                            <Card.Text>
-                              <b>Precio:</b> $ {ferreArt.price}
-                            </Card.Text>
-                            <Button variant="success" className="mx-1">
-                              <i className="fa-solid fa-cart-shopping fa-sm"></i>{" "}
-                              Comprar
-                            </Button>
-                            <Link
-                              to={`edit/${ferreArt.id}`}
-                              className="btn btn-light mx-1 bg-info"
-                            >
-                              {" "}
-                              <i className="fa-solid fa-user-pen fa-2xl"></i>
-                            </Link>
-                            <Button
-                              className="btn btn-danger mx-1"
-                              onClick={() => confirmDelete(ferreArt.id)}
-                            >
-                              {" "}
-                              <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
-                            </Button>
-                          </Card.Body>
-                        </Card>
-                      ))}
-                    </div>
+                  <div className="d-flex flex-wrap m-3 flex-row">
+                    {currentProductos.map((ferreArt) => (
+                      <Card
+                        style={{ width: "18rem", height: "35rem" }}
+                        className="m-3 justify-content-end border border-secondary shadow"
+                      >
+                        <Card.Img
+                          variant="top"
+                          style={{ width: "17.9rem", height: "14rem" }}
+                          src={ferreArt.path}
+                        />
+                        <Card.Body>
+                          <Card.Title>{ferreArt.name}</Card.Title>
+                          <Card.Title className="text-danger">
+                            {ferreArt.brand}
+                          </Card.Title>
+                          <Card.Text>{ferreArt.description}</Card.Text>
+                          <Card.Text>
+                            <b>Stock:</b> {ferreArt.stock}
+                          </Card.Text>
+                          <Card.Text>
+                            <b>Precio:</b> $ {ferreArt.price}
+                          </Card.Text>
+                          <Button variant="success" className="mx-1">
+                            <i class="fa-solid fa-cart-shopping fa-sm"></i>{" "}
+                            Comprar
+                          </Button>
+                          <Link
+                            to={`edit/${ferreArt.id}`}
+                            className="btn btn-light mx-1 bg-info"
+                          >
+                            {" "}
+                            <i className="fa-solid fa-user-pen fa-2xl"></i>
+                          </Link>
+                          <Button
+                            className="btn btn-danger mx-1"
+                            onClick={() => confirmDelete(ferreArt.id)}
+                          >
+                            {" "}
+                            <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
+                          </Button>
+                        </Card.Body>
+                      </Card>
+                    ))}
+                  </div>
+                  {/* Controles de paginación */}
+                  <div className="pagination align-items-center justify-content-center">
+                    <button className="btn btn-primary m-2" onClick={prevPage}>Anterior</button>
+                    {[...Array(Math.ceil(productos.length / productosPerPage)).keys()].map((number) => (
+                      <button
+                      key={number + 1}
+                      onClick={() => paginate(number + 1)}
+                      className={currentPage === number + 1 ? "current-page" : "other-page"}
+                    >
+                      {number + 1}
+                    </button>
+    
+                    ))}
+                    <button className="btn btn-primary m-2" onClick={nextPage}>Siguiente</button>
                   </div>
                 </>
               )}

@@ -60,9 +60,9 @@ export const Contact = () => {
 
 
     return (
-    <div className="App">
+    <div className="App ">
             {/* //Desde aqui el formulario */}
-            <div className="row align-items-center">
+            <div className="row align-items-center margin-navbar">
                 <div className="row align-items-center">
                     <div className="col">
                         <div className="d-grid gap">

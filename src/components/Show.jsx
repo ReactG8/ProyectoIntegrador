@@ -6,12 +6,19 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Pagination } from "./Pagination.jsx";
+import "../App.css"
+
 const mySwal = withReactContent(Swal);
 
 export const Show = () => {
   const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [productos, setProductos] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [productosPerPage] = useState(4); // Número de productos por página
+
   const productosCollection = collection(db, "productos");
   const getProductos = async () => {
     try {
@@ -23,11 +30,13 @@ export const Show = () => {
       setLoading(false);
     }
   };
+
   const deleteFerreArt = async (id) => {
     const productosDoc = doc(db, "productos", id);
     await deleteDoc(productosDoc);
     await getProductos();
   };
+  
   const confirmDelete = (id) => {
     Swal.fire({
       title: "¿Está seguro?",
@@ -45,11 +54,35 @@ export const Show = () => {
       }
     });
   };
+  
   useEffect(() => {
     getProductos();
   }, []);
+  
+  // Calcular índices de productos para la página actual
+  const indexOfLastProducto = currentPage * productosPerPage;
+  const indexOfFirstProducto = indexOfLastProducto - productosPerPage;
+  const currentProductos = productos && productos.slice(indexOfFirstProducto, indexOfLastProducto);
+
+  // Cambiar de página
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  // Página siguiente
+  const nextPage = () => {
+    if (currentPage < Math.ceil(productos.length / productosPerPage)) {
+      setCurrentPage(currentPage + 1);
+    }
+  };
+
+  // Página anterior
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+  
   return (
-    <div className="App">
+    <div className="App margin-navbar">
       {/* El nav fue movido a un componente nuevo
       <nav
         className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top"
@@ -87,10 +120,10 @@ export const Show = () => {
           </div>
         </div>
       </nav> */}
-      <div className="container mt-5"></div>
+      <div className="container margin-navbar"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
-        <div className="d-flex   border container">
+        <div className="d-flex border container">
           <div className="spinner-border" role="status">
             <span className="visually-hidden">Loading...</span>
           </div>
@@ -101,15 +134,15 @@ export const Show = () => {
           <h1>Hubo un error en la base de datos: {error}</h1>
         </>
       )}
-      <div className="container-fluid bg-success p-2 text-dark bg-opacity-10">
+      <div className="margin-navbar container-fluid bg-success p-2 text-dark bg-opacity-10">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
-              {productos && (
+              {currentProductos && (
                 <>
                   <h1 className="mt-5 mx-4">Nuestros productos</h1>
                   <div className="d-flex flex-wrap m-3 flex-row">
-                    {productos.map((ferreArt) => (
+                    {currentProductos.map((ferreArt) => (
                       <Card
                         style={{ width: "18rem", height: "35rem" }}
                         className="m-3 justify-content-end border border-secondary shadow"
@@ -132,7 +165,7 @@ export const Show = () => {
                             <b>Precio:</b> $ {ferreArt.price}
                           </Card.Text>
                           <Button variant="success" className="mx-1">
-                            <i class="fa-solid fa-cart-shopping fa-sm"></i>{" "}
+                            <i className="fa-solid fa-cart-shopping fa-sm"></i>{" "}
                             Comprar
                           </Button>
                           <Link
@@ -153,6 +186,14 @@ export const Show = () => {
                       </Card>
                     ))}
                   </div>
+                  {/* Componente de paginación */}
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={Math.ceil(productos.length / productosPerPage)}
+                    onPageChange={paginate}
+                    onPrevPage={prevPage}
+                    onNextPage={nextPage}
+                  />
                 </>
               )}
             </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
+import "./Create.css"
 
 export const Create = () => {
   const [brand, setBrand] = useState("");
@@ -28,10 +29,10 @@ export const Create = () => {
     navigate("/");
   };
   return (
-    <div className="container-fluid margin-navbar">
+    <div className="container-fluid ">
       <div className="row justify-content-center align-items-center mt-5">
         <div className="col">
-          <h1 className="text-center">Crear Producto</h1>
+          <h1 className="text-center margin-navbar">Crear Producto</h1>
           <form className="mb-3 mt-5" onSubmit={createProducto}>
             <div className="mb-3">
               <label className="form-label">

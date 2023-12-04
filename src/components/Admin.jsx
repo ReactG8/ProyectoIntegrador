@@ -5,7 +5,7 @@ import { db } from "../firebaseConfig/firebase.js";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import { Pagination } from "./Pagination.jsx";
-import "../App.css"
+import "./Admin.css"
 
 const mySwal = withReactContent(Swal);
 
@@ -16,7 +16,7 @@ export const Admin = () => {
   const productosCollection = collection(db, "productos");
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [productosPerPage] = useState(5); // Número de productos por página
+  const [productosPerPage] = useState(4); // Número de productos por página
 
   const getProductos = async () => {
     try {

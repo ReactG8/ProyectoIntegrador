@@ -7,6 +7,8 @@ import { Footer } from "./components/Footer";
 import { Contact } from "./components/Contact"
 import { Admin } from "./components/Admin"
 
+import { Login } from "./components/Login"
+
 export const App = () => {
   return (
     <div className="App">
@@ -18,6 +20,8 @@ export const App = () => {
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} />  
+
+          <Route path="/login" element={<Login />} /> 
         </Routes>
         <Footer />
       </BrowserRouter>

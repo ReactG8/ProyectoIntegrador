@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import Carousel from 'react-bootstrap/Carousel';
 import { Pagination } from "./Pagination.jsx";
 import "../App.css"
 
@@ -147,11 +148,34 @@ export const Show = () => {
                         style={{ width: "18rem", height: "35rem" }}
                         className="m-3 justify-content-end border border-secondary shadow"
                       >
-                        <Card.Img
-                          variant="top"
-                          style={{ width: "17.9rem", height: "14rem" }}
-                          src={ferreArt.path}
-                        />
+                        {/*empieza slide  con bootstrap*/}
+                        <Carousel data-bs-theme="dark">
+                          <Carousel.Item>
+                            <Card.Img
+                                variant="top"
+                                style={{ width: "17.9rem", height: "14rem" }}
+                                src={ferreArt.path}
+                                alt="First slide"
+                            />                        
+                          </Carousel.Item>
+                          <Carousel.Item>
+                            <Card.Img
+                                variant="top"
+                                style={{ width: "17.9rem", height: "14rem" }}
+                                src={ferreArt.path2}
+                                alt="Second slide"
+                              />
+                          </Carousel.Item>  
+                          <Carousel.Item>
+                            <Card.Img
+                                variant="top"
+                                style={{ width: "17.9rem", height: "14rem" }}
+                                src={ferreArt.path3}
+                                alt=" Third slide"
+                              />
+                          </Carousel.Item>
+                        </Carousel>
+                        {/*Termina slide  con bootstrap*/}
                         <Card.Body>
                           <Card.Title>{ferreArt.name}</Card.Title>
                           <Card.Title className="text-danger">

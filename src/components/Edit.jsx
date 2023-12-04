@@ -4,7 +4,7 @@ import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import "../App.css"
+import "./Edit.css"
 
 
 const mySwal2 = withReactContent(Swal);
@@ -58,7 +58,7 @@ export const Edit = () => {
   }, [id]);
 
   return (
-    <div className="container margin-navbar">
+    <div className="container">
       <div className="row justify-content-center align-items-center">
         <div className="col ">
           <h1 className="text-center mb-3">Editar Producto</h1>

@@ -1,7 +1,7 @@
 export const Footer = () => {
   return (
-    <footer className="py-3 bg-dark text-white">
-      <ul className="nav justify-content-center border-bottom pb-3 mb-3">
+    <footer className="bg-dark text-white fixed-bottom">
+      <ul className="nav justify-content-center border-bottom mb-2">
         <li className="nav-item">
           <a href="#!" className="nav-link px-2 text-white">
             <i className="fa-brands fa-instagram fa-xl"></i>

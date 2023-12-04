@@ -8,7 +8,7 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Carousel from 'react-bootstrap/Carousel';
 import { Pagination } from "./Pagination.jsx";
-import "../App.css"
+import "./Show.css"
 
 const mySwal = withReactContent(Swal);
 
@@ -83,7 +83,7 @@ export const Show = () => {
   };
   
   return (
-    <div className="App margin-navbar">
+    <div className="App margin-footer">
       {/* El nav fue movido a un componente nuevo
       <nav
         className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top"
@@ -121,7 +121,7 @@ export const Show = () => {
           </div>
         </div>
       </nav> */}
-      <div className="container margin-navbar"></div>
+      <div className="container "></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
         <div className="d-flex border container">
@@ -135,7 +135,7 @@ export const Show = () => {
           <h1>Hubo un error en la base de datos: {error}</h1>
         </>
       )}
-      <div className="margin-navbar container-fluid bg-success p-2 text-dark bg-opacity-10">
+      <div className=" mb-5 container-fluid bg-success p-2 text-dark bg-opacity-10">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">

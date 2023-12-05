@@ -8,6 +8,7 @@ import { Contact } from "./components/Contact"
 import { Admin } from "./components/Admin"
 
 import { Login } from "./components/Login"
+import { ChooseUsernameView } from "./components/ChooseUsername"
 
 export const App = () => {
   return (
@@ -22,6 +23,7 @@ export const App = () => {
           <Route path="/admin" element={<Admin />} />  
 
           <Route path="/login" element={<Login />} /> 
+          <Route path="/choose-username" element={<ChooseUsernameView />} /> 
         </Routes>
         <Footer />
       </BrowserRouter>

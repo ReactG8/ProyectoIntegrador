@@ -20,8 +20,8 @@ export const App = () => {
           <Route path="/create" element={<Create />} />
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/contact" element={<Contact />} />
-          <Route path="/admin" element={<Admin />} />  
-
+          <Route path="/admin" element={<Admin />} /> 
+          <Route path="/admin/edit/:id" element={<Edit />} />  
           <Route path="/login" element={<Login />} /> 
           <Route path="/choose-username" element={<ChooseUsernameView />} /> 
         </Routes>

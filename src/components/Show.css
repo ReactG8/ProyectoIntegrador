@@ -5,3 +5,8 @@
 .margin-footer {
     margin-bottom: 250px;
 }
+
+#interior_tarjeta:hover {
+    background-color: #4D4D4D;
+    color: #EBEBEB
+}

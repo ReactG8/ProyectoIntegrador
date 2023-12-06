@@ -37,7 +37,7 @@ export const Show = () => {
     await deleteDoc(productosDoc);
     await getProductos();
   };
-  
+
   const confirmDelete = (id) => {
     Swal.fire({
       title: "¿Está seguro?",
@@ -55,11 +55,29 @@ export const Show = () => {
       }
     });
   };
-  
+
+  const confirmBuy = (name) => {
+
+    Swal.fire({
+      title: "¿Está seguro?",
+      text: `"Usted está por agregar el producto ${name} al carrito de compras"`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Agregar",
+      cancelButtonText: "Cancelar",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(`${name}"¡Agregado al carrito de compras!", "Puede proceder a efectuar su compra", "Producto elegido"`);
+      }
+    });
+  };
+
   useEffect(() => {
     getProductos();
   }, []);
-  
+
   // Calcular índices de productos para la página actual
   const indexOfLastProducto = currentPage * productosPerPage;
   const indexOfFirstProducto = indexOfLastProducto - productosPerPage;
@@ -81,7 +99,7 @@ export const Show = () => {
       setCurrentPage(currentPage - 1);
     }
   };
-  
+
   return (
     <div className="App margin-footer">
       {/* El nav fue movido a un componente nuevo
@@ -152,31 +170,31 @@ export const Show = () => {
                         <Carousel data-bs-theme="dark" interval={null}>
                           <Carousel.Item>
                             <Card.Img
-                                variant="top"
-                                style={{ width: "17.9rem", height: "14rem" }}
-                                src={ferreArt.path}
-                                alt="First slide"
-                            />                        
+                              variant="top"
+                              style={{ width: "17.9rem", height: "14rem" }}
+                              src={ferreArt.path}
+                              alt="First slide"
+                            />
                           </Carousel.Item>
                           <Carousel.Item>
                             <Card.Img
-                                variant="top"
-                                style={{ width: "17.9rem", height: "14rem" }}
-                                src={ferreArt.path2}
-                                alt="Second slide"
-                              />
-                          </Carousel.Item>  
+                              variant="top"
+                              style={{ width: "17.9rem", height: "14rem" }}
+                              src={ferreArt.path2}
+                              alt="Second slide"
+                            />
+                          </Carousel.Item>
                           <Carousel.Item>
                             <Card.Img
-                                variant="top"
-                                style={{ width: "17.9rem", height: "14rem" }}
-                                src={ferreArt.path3}
-                                alt=" Third slide"
-                              />
+                              variant="top"
+                              style={{ width: "17.9rem", height: "14rem" }}
+                              src={ferreArt.path3}
+                              alt=" Third slide"
+                            />
                           </Carousel.Item>
                         </Carousel>
                         {/*Termina slide  con bootstrap*/}
-                        <Card.Body>
+                        <Card.Body id="interior_tarjeta">
                           <Card.Title>{ferreArt.name}</Card.Title>
                           <Card.Title className="text-danger">
                             {ferreArt.brand}
@@ -188,23 +206,9 @@ export const Show = () => {
                           <Card.Text>
                             <b>Precio:</b> $ {ferreArt.price}
                           </Card.Text>
-                          <Button variant="success" className="mx-1">
+                          <Button variant="success" className="mx-1" onClick={() => confirmBuy(ferreArt.name)}>
                             <i className="fa-solid fa-cart-shopping fa-sm"></i>{" "}
                             Comprar
-                          </Button>
-                          <Link
-                            to={`edit/${ferreArt.id}`}
-                            className="btn btn-light mx-1 bg-info"
-                          >
-                            {" "}
-                            <i className="fa-solid fa-user-pen fa-2xl"></i>
-                          </Link>
-                          <Button
-                            className="btn btn-danger mx-1"
-                            onClick={() => confirmDelete(ferreArt.id)}
-                          >
-                            {" "}
-                            <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
                           </Button>
                         </Card.Body>
                       </Card>

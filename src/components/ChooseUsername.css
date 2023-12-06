@@ -1,0 +1,40 @@
+p{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-input{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+.container-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+.btn-continuar {
+    background-color: rgb(233, 213, 29); 
+    border: 1px solid #1b215a;
+    color: #1b215a;
+    padding: 10px 20px;
+    font-size: 20px; 
+    font-weight: bold;
+    cursor: pointer; 
+    border-radius: 10px; 
+    transition: box-shadow 0.3s ease;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .btn-continuar:hover {
+    background-color: rgb(233, 196, 29); 
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.6);
+}
+  

@@ -144,7 +144,7 @@ export const Show = () => {
                   <h1 className="mt-5 mx-4">Nuestros productos</h1>
                   <div className="d-flex flex-wrap m-3 flex-row">
                     {currentProductos.map((ferreArt) => (
-                      <Card
+                      <Card key={ferreArt.id}
                         style={{ width: "18rem", height: "35rem" }}
                         className="m-3 justify-content-end border border-secondary shadow"
                       >

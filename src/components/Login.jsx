@@ -51,7 +51,7 @@ export function Login() {
         return (
             <div>
                 <button className="login-button" onClick={handleOnClick}>
-                <i class="fab fa-google"></i> Login con Google
+                <i className="fab fa-google"></i> Login con Google
                 </button>
             </div>
         )

@@ -1,0 +1,21 @@
+body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #A9B388;
+  }
+
+  .App {
+    margin-top: 100px;
+  }
+
+  form {
+    margin-top: 20px;
+    width: 500px; 
+    padding: 20px;
+    border: 1px solid #929191;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }

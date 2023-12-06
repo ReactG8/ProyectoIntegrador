@@ -1,0 +1,20 @@
+.login-button {
+    background-color: rgb(233, 213, 29); 
+    border: 1px solid #1b215a;
+    color: #1b215a;
+    padding: 10px 20px;
+    font-size: 25px; 
+    font-weight: bold;
+    cursor: pointer; 
+    border-radius: 40px; 
+    transition: box-shadow 0.3s ease;
+  }
+  
+  .login-button:hover {
+    background-color: rgb(233, 196, 29); 
+    box-shadow: 1px 4px 8px rgba(0, 0, 0, 0.6);
+}
+  
+  .login-button i {
+    margin-right: 10px; /* Ajusta el espacio entre el ícono y el texto */
+  }

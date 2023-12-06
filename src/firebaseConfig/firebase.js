@@ -1,6 +1,7 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore, doc, getDoc, getDocs } from "@firebase/firestore"
+import { getFirestore, doc, getDoc, 
+  getDocs, setDoc, collection, query, addDoc, where, deleteDoc } from "@firebase/firestore"
 import { getAuth } from "firebase/auth";
 
 // Your web app's Firebase configuration
@@ -32,8 +33,8 @@ export async function userExists(uid){
 
 export async function existsUsername(username) {
   const users = [];
-  const docRef = collection(db, "users")
-  const q = query(docRef, where("username", "==", username));
+  const docsRef = collection(db, "users")
+  const q = query(docsRef, where("username", "==", username));
 
   const querySnapshot = await getDocs(q);
 
@@ -44,3 +45,37 @@ export async function existsUsername(username) {
   return users.length > 0 ? users[0].uid : null;
 }
 
+export async function registerNewUser(user) {
+  try {
+    const collectionRef = collection(db, "users");
+    const docRef = doc(collectionRef, user.uid)
+    await setDoc(docRef, user);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+export async function updateUser(user) {
+  console.log(user);
+  try {
+    const collectionRef = collection(db, "users");
+    const docRef = doc(collectionRef, user.uid)
+    await setDoc(docRef, user);
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
+}
+
+export async function getUserInfo(uid) {
+  try{
+    const docRef = doc(db, "users", uid);
+    const document = await getDoc(docRef);
+    return document.data();
+  }catch(e){
+    console.error("Error: ", e);
+  }
+}
+
+export async function logout() {
+  await auth.signOut();
+}

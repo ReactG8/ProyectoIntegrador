@@ -1,7 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AuthProvider } from "./AuthProvider.jsx";
 import { useState } from "react";
-import { existsUsername } from "../firebaseConfig/firebase.js";
+import { existsUsername, updateUser } from "../firebaseConfig/firebase.js";
 
 export function ChooseUsernameView() {
 
@@ -29,17 +29,21 @@ export function ChooseUsernameView() {
     }
 
     async function handleContinue() {
-        if(username != ""){
+        if(username !== ""){
             const exists = await existsUsername(username);
             if(exists){
                 setState(5);
             }else{
-
+                const tmp = {... currentUser};
+                tmp.username = username;
+                tmp.processComplete = true;
+                await updateUser(tmp);
+                setState(6);
             }
         }
     }
 
-    if(state === 3){
+    if(state === 3 || state === 5){
         return (
             <div>
                 <h1>
@@ -48,7 +52,7 @@ export function ChooseUsernameView() {
                 <p>
                     Para terminar el registro, elige un nombre de usuario
                 </p>
-
+                {state === 5? <p>EL nombre de usuario ya existe, por favor esoge otro</p> : ""}
                 <div>
                     <input type="text" onChange={handleInputUsername}/>
                 </div>
@@ -56,6 +60,15 @@ export function ChooseUsernameView() {
                     <button onClick={handleContinue}>Continuar</button>
                 </div>
             </div>)
+    }
+
+    if(state === 6){
+        return <div>
+            <h1>Usuario creado con éxito! ya puedes administrar nuestro stock</h1>
+            <Link to="/admin">Continuar</Link>
+        </div>
+    }else{
+
     }
 
     return (

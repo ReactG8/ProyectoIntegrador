@@ -9,7 +9,7 @@ import { Admin } from "./components/Admin"
 import { Login } from "./components/Login"
 import { ChooseUsernameView } from "./components/ChooseUsername"
 import { SignOut } from "./components/Signout"
-
+import { Comentarios } from "./components/ShowComentarios"
 
 export const App = () => {
   return (
@@ -26,6 +26,7 @@ export const App = () => {
           <Route path="/login" element={<Login />} /> 
           <Route path="/choose-username" element={<ChooseUsernameView />} /> 
           <Route path="/signout" element={<SignOut />} /> 
+          <Route path="/comentarios" element={<Comentarios />} /> 
         </Routes>
         <Footer />
       </BrowserRouter>

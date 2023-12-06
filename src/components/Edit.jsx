@@ -58,7 +58,7 @@ export const Edit = () => {
   }, [id]);
 
   return (
-    <div className="container">
+    <div className="container-fluid">
       <div className="row justify-content-center align-items-center">
         <div className="col ">
           <h1 className="text-center mb-3">Editar Producto</h1>

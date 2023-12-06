@@ -29,7 +29,7 @@ export const Create = () => {
     navigate("/");
   };
   return (
-    <div className="container-fluid ">
+    <div className="container-fluid">
       <div className="row justify-content-center align-items-center mt-5">
         <div className="col">
           <h1 className="text-center margin-navbar">Crear Producto</h1>
@@ -121,7 +121,7 @@ export const Create = () => {
             <Link to="/" className="btn btn-danger btn-2xl">
               <i className="fa-solid fa-xmark"></i> Cancelar
             </Link>
-          </form > 
+          </form >
         </div>
         <div className="col auto text-center"><div className="center-block"><img src={path} onChange={(evento) => setPrice(evento.target.src)} alt="Previsualización de Imagen del producto" width="300" className="d-inline-block"></img></div></div>
       </div>

@@ -139,7 +139,7 @@ export const Show = () => {
           </div>
         </div>
       </nav> */}
-      <div className="container "></div>
+      <div className="container-fluid"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
         <div className="d-flex border container">

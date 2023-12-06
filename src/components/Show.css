@@ -1,12 +1,13 @@
-.margin-navbar {
-    margin-top: 4%;
-}
-
 .margin-footer {
-    margin-bottom: 250px;
+    margin-bottom: 90px;
 }
 
 #interior_tarjeta:hover {
     background-color: #4D4D4D;
     color: #EBEBEB
+}
+
+.container-fluid  {
+    padding-top: 100px;
+    padding-bottom: 20px;
 }

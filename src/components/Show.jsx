@@ -149,7 +149,7 @@ export const Show = () => {
                         className="m-3 justify-content-end border border-secondary shadow"
                       >
                         {/*empieza slide  con bootstrap*/}
-                        <Carousel data-bs-theme="dark">
+                        <Carousel data-bs-theme="dark" interval={null}>
                           <Carousel.Item>
                             <Card.Img
                                 variant="top"

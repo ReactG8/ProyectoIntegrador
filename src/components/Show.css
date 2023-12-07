@@ -1,5 +1,8 @@
 .margin-footer {
     margin-bottom: 90px;
+    padding: 3rem 0 1vh 0;
+    
+    
 }
 
 .paletaColor{
@@ -19,4 +22,20 @@
 .container-fluid  {
     padding-top: 100px;
     padding-bottom: 20px;
+}
+
+@media (max-width: 1330px) {
+    .margin-footer {
+        /*margin-bottom: 250px;*/
+        padding: 40rem 0 1vh 0;
+        
+    }
+}
+
+@media (max-width: 687px) {
+    .margin-footer {
+        /*margin-bottom: 250px;*/
+        padding: 110rem 0 1vh 0;
+        
+    }
 }

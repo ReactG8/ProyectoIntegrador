@@ -128,7 +128,7 @@ export const Admin = () => {
                           <td>{ferreArt.stock}</td>
                           <td>
                             <Link
-                              to={`edit/${ferreArt.id}`}
+                              to={`/admin/edit/${ferreArt.id}`}
                               className="btn btn-light"
                             >
                               {" "}

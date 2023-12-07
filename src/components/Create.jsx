@@ -26,7 +26,7 @@ export const Create = () => {
       price: price,
       stock: stock,
     });
-    navigate("/");
+    navigate("/admin");
   };
   return (
     <div className="container-fluid">
@@ -118,7 +118,7 @@ export const Create = () => {
             >
               <i className="fa-solid fa-plus"></i> Agregar
             </button>
-            <Link to="/" className="btn btn-danger btn-2xl">
+            <Link to="/admin" className="btn btn-danger btn-2xl">
               <i className="fa-solid fa-xmark"></i> Cancelar
             </Link>
           </form >

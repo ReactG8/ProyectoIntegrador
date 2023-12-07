@@ -6,7 +6,6 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./Edit.css"
 
-
 const mySwal2 = withReactContent(Swal);
 
 export const Edit = () => {
@@ -32,8 +31,17 @@ export const Edit = () => {
       price: price,
       stock: stock,
     };
+
     await updateDoc(ferreArtDoc, data);
-    navigate("/");
+
+    Swal.fire({
+      icon: "success",
+      title: "¡Cambios guardados!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
+    navigate("/admin");
   };
   const getFerreArtPorID = async (id) => {
     const ferreArtDoc = await getDoc(doc(db, "productos", id));
@@ -143,18 +151,17 @@ export const Edit = () => {
             </div>
             <button
               type="submit"
-              className="btn btn-secondary btn-2xl m-3 btn-success"
-            >
+              className="btn btn-secondary btn-2xl m-3 btn-success">
               <i className="fa-solid fa-floppy-disk"></i> Guardar cambios
             </button>
-            <Link to="/" className="btn btn-danger btn-2xl">
+            <Link to="/admin" className="btn btn-danger btn-2xl">
               <i className="fa-solid fa-xmark"></i> Cancelar
             </Link>
           </form>
         </div>
         <div className="col auto text-center">
-          <div class="center-block">
-            <img src={path} onChange={(evento) => setPrice(evento.target.src)} alt="Previsualización de Imagen del producto" width="200" class="d-inline-block"></img>
+          <div className="center-block">
+            <img src={path} onChange={(evento) => setPrice(evento.target.src)} alt="Previsualización de Imagen del producto" width="200" className="d-inline-block"></img>
           </div>
         </div>
       </div>

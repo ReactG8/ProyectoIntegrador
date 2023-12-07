@@ -8,8 +8,8 @@ import { Contact } from "./components/Contact"
 import { Admin } from "./components/Admin"
 import { Login } from "./components/Login"
 import { ChooseUsernameView } from "./components/ChooseUsername"
-import { SignOut } from "./components/Signout"
-import { Comentarios } from "./components/ShowComentarios"
+import { SignOut } from "./components/SignOut"
+import { Comentarios } from "./components/Comentarios"
 
 export const App = () => {
   return (
@@ -22,7 +22,7 @@ export const App = () => {
           <Route path="/edit/:id" element={<Edit />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/admin" element={<Admin />} /> 
-          <Route path="/admin/edit/:id" element={<Edit />} />  
+          <Route path="/admin/edit/:id" element={<Edit />} />
           <Route path="/login" element={<Login />} /> 
           <Route path="/choose-username" element={<ChooseUsernameView />} /> 
           <Route path="/signout" element={<SignOut />} /> 

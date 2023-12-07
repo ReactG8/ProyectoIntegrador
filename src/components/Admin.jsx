@@ -77,7 +77,7 @@ export const Admin = () => {
   };
 
   return (
-    <div className="App">
+    <div className="App appContainer">
       <div className="container mt-5"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
@@ -135,7 +135,7 @@ export const Admin = () => {
                               <i className="fa-solid fa-user-pen fa-2xl"></i>
                             </Link>
                             <button
-                              className="btn btn-danger"
+                              className="btn btn-danger ms-1"
                               onClick={() => confirmDelete(ferreArt.id)}
                             >
                               {" "}

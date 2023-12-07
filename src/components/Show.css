@@ -2,6 +2,15 @@
     margin-bottom: 90px;
 }
 
+.paletaColor{
+    background-color: rgba(77, 77, 77, 0.1) ;
+}
+
+.botonComprar {
+    position: absolute;
+    bottom: 30px;
+}
+
 #interior_tarjeta:hover {
     background-color: #4D4D4D;
     color: #EBEBEB

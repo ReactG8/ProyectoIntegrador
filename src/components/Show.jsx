@@ -153,14 +153,14 @@ export const Show = () => {
           <h1>Hubo un error en la base de datos: {error}</h1>
         </>
       )}
-      <div className=" mb-5 container-fluid bg-success p-2 text-dark bg-opacity-10">
+      <div className=" mb-5 container-fluid p-2 text-dark paletaColor">
         <div className="row">
           <div className="col">
             <div className="d-grid gap-2">
               {currentProductos && (
                 <>
                   <h1 className="mt-5 mx-4">Nuestros productos</h1>
-                  <div className="d-flex flex-wrap m-3 flex-row">
+                  <div className="d-flex flex-wrap m-3 flex-row justify-content-center">
                     {currentProductos.map((ferreArt) => (
                       <Card key={ferreArt.id}
                         style={{ width: "18rem", height: "35rem" }}
@@ -194,7 +194,7 @@ export const Show = () => {
                           </Carousel.Item>
                         </Carousel>
                         {/*Termina slide  con bootstrap*/}
-                        <Card.Body id="interior_tarjeta">
+                        <Card.Body id="interior_tarjeta" className="d-flex flex-column justify-content-start align-items-start ">
                           <Card.Title>{ferreArt.name}</Card.Title>
                           <Card.Title className="text-danger">
                             {ferreArt.brand}
@@ -206,7 +206,7 @@ export const Show = () => {
                           <Card.Text>
                             <b>Precio:</b> $ {ferreArt.price}
                           </Card.Text>
-                          <Button variant="success" className="mx-1" onClick={() => confirmBuy(ferreArt.name)}>
+                          <Button variant="success" className="mx-1 botonComprar" onClick={() => confirmBuy(ferreArt.name)}>
                             <i className="fa-solid fa-cart-shopping fa-sm"></i>{" "}
                             Comprar
                           </Button>

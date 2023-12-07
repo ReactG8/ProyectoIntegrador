@@ -19,3 +19,14 @@ body {
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   }
+
+  .contactContainer {
+    padding-top: 18rem;
+    padding-bottom: 8rem;
+}
+
+@media (max-width: 991px) {
+  .contactContainer {
+     padding-top: 20rem;
+  }
+}

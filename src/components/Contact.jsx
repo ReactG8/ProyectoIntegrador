@@ -60,7 +60,7 @@ export const Contact = () => {
 
 
     return (
-    <div className="App ">
+    <div className="App contactContainer">
             {/* //Desde aqui el formulario */}
             <div className="row align-items-center margin-navbar">
                 <div className="row align-items-center">
@@ -69,7 +69,7 @@ export const Contact = () => {
                             <h2 className="h3 text-center">Dejanos tu comentario</h2>
 
 
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit} className="d-flex flex-column gap-1">
 
 
                                 <input className="form-control form-control-lg" type="text" placeholder="Nombre" value={nombre} onChange={(e) => setNombre(e.target.value)} />

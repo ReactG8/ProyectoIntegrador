@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import logo from "../assets/Logo2.png";
+import logo from "../assets/Logo6Chico.png";
 
 
 export const Nav = () => {

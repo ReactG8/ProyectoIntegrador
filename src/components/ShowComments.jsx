@@ -26,6 +26,7 @@ export const ShowComments = () => {
         getComments();
     }, []);
 
+
     return (
         <div>
             {/*Condicionales para renderizar el contenido dependiendo del estado */}
@@ -42,19 +43,19 @@ export const ShowComments = () => {
                 </>
             )}
             <div className="contenedor">
-                        <h3>Nuestros clientes dicen...</h3>
-                        <Carousel controls={false} indicators={false}>
-                            {comments.map((comment) => (
-                                <Carousel.Item key={comment.id}>
-                                    <Card>
-                                        <Card.Body className="card-body">
-                                            <Card.Title>"{comment.comentario}"</Card.Title>
-                                            <Card.Text>{comment.nombre} {comment.apellido}</Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Carousel.Item>
-                            ))}
-                        </Carousel>
+                <h3>Nuestros clientes dicen...</h3>
+                <Carousel controls={false} indicators={false}>
+                    {comments.map((comment) => (
+                        <Carousel.Item key={comment.id}>
+                            <Card>
+                                <Card.Body className="card-body">
+                                    <Card.Title>"{comment.comentario}"</Card.Title>
+                                    <Card.Text>{comment.nombre} {comment.apellido}</Card.Text>
+                                </Card.Body>
+                            </Card>
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
             </div>
         </div>
     );

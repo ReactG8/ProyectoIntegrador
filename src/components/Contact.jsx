@@ -4,6 +4,10 @@ import logo from "../assets/Logo2.png"
 import { collection, addDoc } from "firebase/firestore"
 import { db } from "../firebaseConfig/firebase.js";
 import './Contact.css'
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const mySwal = withReactContent(Swal);
 
 export const Contact = () => {
     // Use State
@@ -14,7 +18,6 @@ export const Contact = () => {
     const [comentario, setComentario] = useState('');
 
     const comentarioCollection = collection(db, "comentarios")
-
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -55,6 +58,13 @@ export const Contact = () => {
             console.error('Error al enviar datos a Firestore', error);
             setMensaje('Error al enviar datos, por favor inténtelo de nuevo');
         }
+
+        Swal.fire({
+            icon: "success",
+            title: "¡Mensaje enviado!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
 
     };
 

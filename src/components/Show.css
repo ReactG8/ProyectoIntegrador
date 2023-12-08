@@ -10,6 +10,7 @@
 .botonComprar {
     position: absolute;
     bottom: 30px;
+    left: 10px;
 }
 
 #interior_tarjeta:hover {
@@ -36,4 +37,19 @@
         padding: 110rem 0 1vh 0;
         
     }
+}
+
+.card-description {
+    text-align: start;
+}
+
+
+.nombreProducto {
+    min-height: 50px;
+}
+
+.card-description {
+    min-height: 50px;
+    justify-content: start;
+    align-items: start;
 }

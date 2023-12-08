@@ -195,17 +195,17 @@ export const Show = () => {
                           </Carousel.Item>
                         </Carousel>
                         {/*Termina slide  con bootstrap*/}
-                        <Card.Body id="interior_tarjeta" className="d-flex flex-column justify-content-start align-items-start ">
-                          <Card.Title>{ferreArt.name}</Card.Title>
+                        <Card.Body id="interior_tarjeta" className="d-flex flex-column justify-content-start align-items-start">
+                          <Card.Title className="nombreProducto">{ferreArt.name}</Card.Title>
                           <Card.Title className="text-danger">
                             {ferreArt.brand}
                           </Card.Title>
-                          <Card.Text>{ferreArt.description}</Card.Text>
+                          <Card.Text className="card-description">{ferreArt.description}</Card.Text>
                           <Card.Text>
-                            <b>Stock:</b> {ferreArt.stock}
+                            <b>Stock:</b>&nbsp; {ferreArt.stock}
                           </Card.Text>
                           <Card.Text>
-                            <b>Precio:</b> $ {ferreArt.price}
+                            <b>Precio:</b>&nbsp; $ {ferreArt.price}
                           </Card.Text>
                           <Button variant="success" className="mx-1 botonComprar" onClick={() => confirmBuy(ferreArt.name)}>
                             <i className="fa-solid fa-cart-shopping fa-sm"></i>{" "}

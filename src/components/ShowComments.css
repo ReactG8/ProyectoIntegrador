@@ -1,0 +1,9 @@
+.contenedor {
+    margin: auto;
+    padding: 50px;
+    width: 50%;
+}
+
+.card-body {
+    text-align: center;
+}

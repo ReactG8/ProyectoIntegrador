@@ -9,6 +9,7 @@ import Card from "react-bootstrap/Card";
 import Carousel from 'react-bootstrap/Carousel';
 import { Pagination } from "./Pagination.jsx";
 import "./Show.css"
+import { ShowComments } from "./ShowComments.jsx"
 
 const mySwal = withReactContent(Swal);
 
@@ -101,7 +102,7 @@ export const Show = () => {
   };
 
   return (
-    <div className="App margin-footer">
+    <div className="App">
       {/* El nav fue movido a un componente nuevo
       <nav
         className="navbar navbar-expand-lg bg-dark border-bottom border-body fixed-top"
@@ -222,6 +223,7 @@ export const Show = () => {
                     onPrevPage={prevPage}
                     onNextPage={nextPage}
                   />
+                  <ShowComments />
                 </>
               )}
             </div>

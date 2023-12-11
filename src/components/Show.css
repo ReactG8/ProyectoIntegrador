@@ -1,10 +1,14 @@
 .App {
     margin-bottom: 10px;
     padding: 3rem 0 1vh 0;
+
 }
 
-.paletaColor{
-    background-color: rgba(77, 77, 77, 0.1) ;
+
+
+
+.paletaColor {
+    background-color: rgba(77, 77, 77, 0.1);
 }
 
 .botonComprar {
@@ -18,7 +22,7 @@
     color: #EBEBEB
 }
 
-.container-fluid  {
+.container-fluid {
     padding-top: 100px;
     padding-bottom: 20px;
 }
@@ -27,7 +31,7 @@
     .margin-footer {
         /*margin-bottom: 250px;*/
         padding: 40rem 0 1vh 0;
-        
+
     }
 }
 
@@ -35,9 +39,11 @@
     .margin-footer {
         /*margin-bottom: 250px;*/
         padding: 110rem 0 1vh 0;
-        
+
     }
 }
+
+
 
 .card-description {
     text-align: start;

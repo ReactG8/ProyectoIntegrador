@@ -70,7 +70,7 @@ export const Contact = () => {
 
 
     return (
-    <div className="App contactContainer">
+    <div className="contactContainer">
             {/* //Desde aqui el formulario */}
             <div className="row align-items-center margin-navbar">
                 <div className="row align-items-center">

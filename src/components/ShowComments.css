@@ -7,3 +7,9 @@
 .card-body {
     text-align: center;
 }
+
+@media (max-width: 768px) {
+    .contenedor {
+        width: 400px;
+    }
+  }

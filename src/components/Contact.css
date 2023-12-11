@@ -7,10 +7,6 @@ body {
     background-color: #A9B388;
   }
 
-  .App {
-    margin-top: 100px;
-  }
-
   form {
     margin-top: 20px;
     width: 500px; 
@@ -23,6 +19,7 @@ body {
   .contactContainer {
     padding-top: 18rem;
     padding-bottom: 8rem;
+    margin-top: 10px;
 }
 
 @media (max-width: 991px) {
@@ -30,3 +27,15 @@ body {
      padding-top: 20rem;
   }
 }
+
+@media (max-width: 768px) {
+
+  .contactContainer {
+    margin-top: 160px;
+  }
+
+  form {
+    width: 400px;
+  }
+}
+

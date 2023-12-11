@@ -21,8 +21,8 @@ export const Nav = () => {
     <nav
       className="navbar navbar-expand-sm navbar-dark bg-dark border-body fixed-top shadow d-flex"
     >
-      <button class="navbar-toggler m-3" type="button" data-bs-toggle="collapse" data-bs-target="#opciones">
-        <span class="navbar-toggler-icon"></span>
+      <button className="navbar-toggler m-3" type="button" data-bs-toggle="collapse" data-bs-target="#opciones">
+        <span className="navbar-toggler-icon"></span>
       </button>
       
         <a className="navbar-brand" href="/">
@@ -36,7 +36,7 @@ export const Nav = () => {
         </a>
         <h3 className="nonbre text-light">Ferretería MiBarrio</h3>
 
-        <div class="collapse navbar-collapse m-3" id="opciones">   
+        <div className="collapse navbar-collapse m-3" id="opciones">   
           <ul className="navbar-nav">
 
             {shouldShowLinkLogin && (

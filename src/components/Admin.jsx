@@ -77,8 +77,9 @@ export const Admin = () => {
   };
 
   return (
-    <div className="App appContainer">
-      <div className="container mt-5"></div>
+    <div className="App appContainer
+}">
+      <div className="container mt-5 m-0"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (
         <div className="d-flex   border container">
@@ -93,74 +94,75 @@ export const Admin = () => {
         </>
       )}
       <div className="margin-navbar">
-      <div className="container-fluid">
-        <div className="row">
-          <div className="col">
-            <div className="d-grid gap-2">
-              {currentProductos && (
-                <>
-                  <table className="table table-dark table-hover">
-                    <thead>
-                      <tr>
-                        <th>Marca</th>
-                        <th>Producto</th>
-                        <th>Descripción</th>
-                        <th>Imagen</th>
-                        <th>Precio ($)</th>
-                        <th>Existencia</th>
-                        <th>Acciones</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {currentProductos.map((ferreArt) => (
-                        <tr key={ferreArt.id}>
-                          <td>{ferreArt.brand}</td>
-                          <td>{ferreArt.name}</td>
-                          <td>{ferreArt.description}</td>
-                          <td>
-                            <img
-                              src={ferreArt.path}
-                              width="150"
-                              alt={ferreArt.name}
-                            />
-                          </td>
-                          <td>{ferreArt.price}</td>
-                          <td>{ferreArt.stock}</td>
-                          <td>
-                            <Link
-                              to={`/admin/edit/${ferreArt.id}`}
-                              className="btn btn-light"
-                            >
-                              {" "}
-                              <i className="fa-solid fa-user-pen fa-2xl"></i>
-                            </Link>
-                            <button
-                              className="btn btn-danger ms-1"
-                              onClick={() => confirmDelete(ferreArt.id)}
-                            >
-                              {" "}
-                              <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
-                            </button>
-                          </td>
+        <div className="container-fluid flex-wrap justify-content-center;
+}">
+          <div className="row">
+            <div className="col">
+              <div className="d-grid gap-2">
+                {currentProductos && (
+                  <>
+                    <table className="table table-dark table table-striped table-hover">
+                      <thead>
+                        <tr>
+                          <th>Marca</th>
+                          <th>Producto</th>
+                          <th>Descripción</th>
+                          <th>Imagen</th>
+                          <th>Precio ($)</th>
+                          <th>Existencia</th>
+                          <th>Acciones</th>
                         </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                  {/* Componente de paginación */}
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={Math.ceil(productos.length / productosPerPage)}
-                    onPageChange={paginate}
-                    onPrevPage={prevPage}
-                    onNextPage={nextPage}
-                  />
-                </>
-              )}
+                      </thead>
+                      <tbody>
+                        {currentProductos.map((ferreArt) => (
+                          <tr key={ferreArt.id}>
+                            <td>{ferreArt.brand}</td>
+                            <td>{ferreArt.name}</td>
+                            <td>{ferreArt.description}</td>
+                            <td>
+                              <img
+                                src={ferreArt.path}
+                                width="150"
+                                alt={ferreArt.name}
+                              />
+                            </td>
+                            <td>{ferreArt.price}</td>
+                            <td>{ferreArt.stock}</td>
+                            <td>
+                              <Link
+                                to={`/admin/edit/${ferreArt.id}`}
+                                className="btn btn-light"
+                              >
+                                {" "}
+                                <i className="fa-solid fa-user-pen fa-2xl"></i>
+                              </Link>
+                              <button
+                                className="btn btn-danger ms-1"
+                                onClick={() => confirmDelete(ferreArt.id)}
+                              >
+                                {" "}
+                                <i className="fa-solid fa-trash-can fa-2xl"></i>{" "}
+                              </button>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                    {/* Componente de paginación */}
+                    <Pagination
+                      currentPage={currentPage}
+                      totalPages={Math.ceil(productos.length / productosPerPage)}
+                      onPageChange={paginate}
+                      onPrevPage={prevPage}
+                      onNextPage={nextPage}
+                    />
+                  </>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
   );
 };

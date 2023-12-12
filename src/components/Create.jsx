@@ -3,6 +3,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
 import "./Create.css"
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const mySwal2 = withReactContent(Swal);
 
 export const Create = () => {
   const [brand, setBrand] = useState("");
@@ -26,6 +30,14 @@ export const Create = () => {
       price: price,
       stock: stock,
     });
+
+    Swal.fire({
+      icon: "success",
+      title: "¡Producto creado exitosamente!",
+      showConfirmButton: false,
+      timer: 1500,
+    });
+
     navigate("/admin");
   };
   return (

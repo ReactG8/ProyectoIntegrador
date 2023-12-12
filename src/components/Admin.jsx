@@ -77,8 +77,7 @@ export const Admin = () => {
   };
 
   return (
-    <div className="App appContainer
-}">
+    <div className="App appContainer">
       <div className="container mt-5 m-0"></div>
       {/*Condicionales para renderizar el contenido dependiendo del estado */}
       {loading && (

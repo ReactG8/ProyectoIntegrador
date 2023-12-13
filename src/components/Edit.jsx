@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { getDoc, updateDoc, doc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
+import { storage } from "../firebaseConfig/firebase.js"
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 import "./Edit.css"
@@ -13,6 +14,8 @@ export const Edit = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [path, setPath] = useState("");
+  const [path2, setPath2] = useState("");
+  const [path3, setPath3] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
 
@@ -28,6 +31,8 @@ export const Edit = () => {
       name: name,
       description: description,
       path: path,
+      path2: path2,
+      path3: path3,
       price: price,
       stock: stock,
     };
@@ -50,6 +55,8 @@ export const Edit = () => {
       setName(ferreArtDoc.data().name);
       setDescription(ferreArtDoc.data().description);
       setPath(ferreArtDoc.data().path);
+      setPath2(ferreArtDoc.data().path2);
+      setPath3(ferreArtDoc.data().path3);
       setPrice(ferreArtDoc.data().price);
       setStock(ferreArtDoc.data().stock);
     } else {
@@ -122,6 +129,22 @@ export const Edit = () => {
                 type="text"
                 required
               />
+              <textarea
+                value={path2}
+                rows={4}
+                onChange={(evento) => setPath(evento.target.value)}
+                className="form-control"
+                type="text"
+                required
+              />
+              <textarea
+                value={path3}
+                rows={4}
+                onChange={(evento) => setPath(evento.target.value)}
+                className="form-control"
+                type="text"
+                required
+              />
             </div>
             <div className="mb-3">
               <label className="form-label">
@@ -133,6 +156,7 @@ export const Edit = () => {
                 className="form-control"
                 type="number"
                 min="0"
+                step="0.01"
                 required
               />
             </div>

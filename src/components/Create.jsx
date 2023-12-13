@@ -1,7 +1,10 @@
 import { useState } from "react";
+import React from "react"
 import { Link, useNavigate } from "react-router-dom";
-import { collection, addDoc } from "firebase/firestore";
+import { getFirestore, collection, addDoc } from "firebase/firestore";
 import { db } from "../firebaseConfig/firebase.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage"
+import { storage } from "../firebaseConfig/firebase.js"
 import "./Create.css"
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
@@ -13,6 +16,8 @@ export const Create = () => {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [path, setPath] = useState("");
+  const [path2, setPath2] = useState("");
+  const [path3, setPath3] = useState("");
   const [price, setPrice] = useState("");
   const [stock, setStock] = useState("");
 
@@ -27,6 +32,8 @@ export const Create = () => {
       name: name,
       description: description,
       path: path,
+      path2: path2,
+      path3: path3,
       price: price,
       stock: stock,
     });
@@ -86,17 +93,44 @@ export const Create = () => {
               />
             </div>
             <div className="mb-3">
-              <label className="form-label">
-                <b>Imagen (URL)</b>
-              </label>
-              <textarea
-                placeholder="Ingrese la URL de la imagen"
-                rows={3}
-                onChange={(evento) => setPath(evento.target.value)}
+              <label className="form-label">Imágenes </label>
+              <input
+                accept="image/*"
+                onChange={async (evento) => {
+                  const archivoImg = evento.target.files[0]
+                  const refArchivo = ref(storage, `${archivoImg.name}`)
+                  await uploadBytes(refArchivo, archivoImg)
+                  setPath(await getDownloadURL(refArchivo))
+                }}
                 className="form-control"
-                type="text"
-                required
-              />
+                type="file"
+                required />
+            </div>
+            <div className="mb-3">
+              <input
+                accept="image/*"
+                type="file"
+                className="form-control"
+                onChange={async (evento) => {
+                  const archivoImg = evento.target.files[0]
+                  const refArchivo = ref(storage, `${archivoImg.name}`)
+                  await uploadBytes(refArchivo, archivoImg)
+                  setPath2(await getDownloadURL(refArchivo))
+                }}
+                required />
+            </div>
+            <div className="mb-3">
+              <input
+                accept="image/*"
+                type="file"
+                className="form-control"
+                onChange={async (evento) => {
+                  const archivoImg = evento.target.files[0]
+                  const refArchivo = ref(storage, `${archivoImg.name}`)
+                  await uploadBytes(refArchivo, archivoImg)
+                  setPath3(await getDownloadURL(refArchivo))
+                }}
+                required />
             </div>
             <div className="mb-3">
               <label className="form-label">
@@ -108,6 +142,7 @@ export const Create = () => {
                 className="form-control"
                 type="number"
                 min="0"
+                step="0.01"
                 required
               />
             </div>
@@ -135,7 +170,28 @@ export const Create = () => {
             </Link>
           </form >
         </div>
-        <div className="col auto text-center"><div className="center-block"><img src={path} onChange={(evento) => setPrice(evento.target.src)} alt="Previsualización de Imagen del producto" width="300" className="d-inline-block"></img></div></div>
+        <div className="col auto text-center">
+          <div className="center-block">
+            <img
+              src={path}
+              alt="Previsualización de Imagen 1 del producto"
+              width="150"
+              className="d-inline-block">
+            </img>
+            <img
+              src={path2}
+              alt="Previsualización de Imagen 2 del producto"
+              width="150"
+              className="d-inline-block">
+            </img>
+            <img
+              src={path3}
+              alt="Previsualización de Imagen 3 del producto"
+              width="150"
+              className="d-inline-block">
+            </img>
+          </div>
+        </div>
       </div>
     </div>
   );
